@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Portfolio</title>
+<title>Leo Hydra — Portfolio</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,50 +9,60 @@
 
 body{
     margin:0;
-    background:#0a0a0a;
+    background:#050505;
     color:white;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    overflow:hidden;
 }
 
 /* Container */
+
 .wrapper{
     text-align:center;
-    animation:fadeIn 1.5s ease forwards;
 }
 
-/* Brand text */
+/* Name */
+
 .logo{
-    font-size:28px;
-    letter-spacing:8px;
-    margin-bottom:30px;
+    font-size:34px;
+    letter-spacing:14px;
     font-weight:300;
+    opacity:0;
+    animation:fadeUp 1.8s ease forwards;
 }
 
-/* Spinner */
-.spinner{
-    width:42px;
-    height:42px;
-    border:2px solid rgba(255,255,255,0.15);
-    border-top:2px solid white;
-    border-radius:50%;
-    animation:spin 0.8s linear infinite;
-    margin:auto;
+/* Subtitle */
+
+.subtitle{
+    margin-top:18px;
+    font-size:12px;
+    letter-spacing:6px;
+    opacity:0;
+    animation:fadeUp 1.8s ease forwards;
+    animation-delay:.6s;
+}
+
+/* Cinematic line */
+
+.line{
+    width:0;
+    height:1px;
+    background:white;
+    margin:40px auto 0 auto;
+    animation:grow 2.2s ease forwards;
+    animation-delay:1.2s;
 }
 
 /* Animations */
 
-@keyframes spin{
-    to{ transform: rotate(360deg); }
-}
-
-@keyframes fadeIn{
+@keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(10px);
+        transform:translateY(12px);
     }
     to{
         opacity:1;
@@ -60,12 +70,22 @@ body{
     }
 }
 
+@keyframes grow{
+    to{
+        width:140px;
+    }
+}
+
 </style>
 
+
 <script>
+
+// Hold screen long enough to feel intentional
 setTimeout(function(){
-    window.location.href = "Portfolio_compressed.pdf";
-}, 2200); // slightly longer feels more intentional
+    window.location.href="Portfolio_compressed.pdf";
+}, 3200);
+
 </script>
 
 </head>
@@ -73,8 +93,17 @@ setTimeout(function(){
 <body>
 
 <div class="wrapper">
-    <div class="logo">LEO HYDRA</div>
-    <div class="spinner"></div>
+
+    <div class="logo">
+        LEO&nbsp;HYDRA
+    </div>
+
+    <div class="subtitle">
+        SELECTED WORK
+    </div>
+
+    <div class="line"></div>
+
 </div>
 
 </body>
