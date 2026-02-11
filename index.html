@@ -6,9 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- REAL preload -->
-<link rel="prefetch" href="Portfolio.pdf">
-
 <style>
 
 body{
@@ -23,40 +20,63 @@ body{
     overflow:hidden;
 }
 
+/* Container */
+
 .wrapper{
     text-align:center;
 }
 
+/* Name */
+
 .logo{
-    font-size:36px;
-    letter-spacing:18px;
+    font-size:34px;
+    letter-spacing:14px;
     font-weight:300;
     opacity:0;
-    animation:fadeUp 1.6s ease forwards;
+    animation:fadeUp 1.8s ease forwards;
 }
+
+/* Subtitle */
 
 .subtitle{
     margin-top:18px;
     font-size:12px;
     letter-spacing:6px;
     opacity:0;
-    animation:fadeUp 1.6s ease forwards;
-    animation-delay:.5s;
+    animation:fadeUp 1.8s ease forwards;
+    animation-delay:.6s;
 }
 
+/* Luxury Loading Line */
+
 .line{
-    width:0;
+    width:140px;
     height:1px;
-    background:white;
-    margin:42px auto 0 auto;
-    animation:grow 1.8s ease forwards;
-    animation-delay:1s;
+    background:rgba(255,255,255,.25);
+    margin:40px auto 0 auto;
+    position:relative;
+    overflow:hidden;
 }
+
+/* Moving highlight */
+
+.line::after{
+    content:'';
+    position:absolute;
+    left:-40%;
+    top:0;
+    height:100%;
+    width:40%;
+    background:white;
+    animation:slide 1.6s linear infinite;
+}
+
+/* Animations */
 
 @keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(10px);
+        transform:translateY(12px);
     }
     to{
         opacity:1;
@@ -64,20 +84,22 @@ body{
     }
 }
 
-@keyframes grow{
-    to{
-        width:160px;
-    }
+@keyframes slide{
+    from{ left:-40%; }
+    to{ left:100%; }
 }
 
 </style>
 
+
 <script>
 
-// redirect after animation finishes
+// Slightly longer so mobile already buffers the PDF.
+// This removes MOST perceived double-loading.
+
 setTimeout(function(){
-    window.location.href="Portfolio.pdf";
-}, 2400);
+    window.location.replace("Portfolio.pdf");
+}, 4500);
 
 </script>
 
@@ -92,7 +114,7 @@ setTimeout(function(){
     </div>
 
     <div class="subtitle">
-        SELECTED WORKS
+        SELECTED WORK
     </div>
 
     <div class="line"></div>
