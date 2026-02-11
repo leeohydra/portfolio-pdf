@@ -94,14 +94,24 @@ body{
 
 <script>
 
-// Slightly longer so mobile already buffers the PDF.
-// This removes MOST perceived double-loading.
+// START downloading instantly
+fetch("Portfolio.pdf")
+.then(function(){
 
+    // tiny smoothing so transition feels intentional
+    setTimeout(function(){
+        window.location.replace("Portfolio.pdf");
+    }, 400);
+
+});
+
+// emergency fallback (rare)
 setTimeout(function(){
     window.location.replace("Portfolio.pdf");
-}, 5000);
+}, 15000);
 
 </script>
+
 
 </head>
 
