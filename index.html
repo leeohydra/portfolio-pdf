@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>Leo Hydra — Portfolio</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -10,101 +9,86 @@
 body{
     margin:0;
     background:#050505;
-    color:white;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     overflow:hidden;
 }
 
-/* Container */
+/* PDF */
 
-.wrapper{
-    text-align:center;
+iframe{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border:none;
 }
 
-/* Name */
+/* Loader */
+
+.loader{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#050505;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial;
+    transition:opacity .8s ease;
+}
+
+/* Fade out */
+
+.loader.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+/* Logo */
 
 .logo{
-    font-size:34px;
     letter-spacing:14px;
-    font-weight:300;
-    opacity:0;
-    animation:fadeUp 1.8s ease forwards;
+    font-size:34px;
+    margin-bottom:20px;
 }
 
-/* Subtitle */
-
-.subtitle{
-    margin-top:18px;
-    font-size:12px;
-    letter-spacing:6px;
-    opacity:0;
-    animation:fadeUp 1.8s ease forwards;
-    animation-delay:.6s;
-}
-
-/* Cinematic line */
+/* Luxury line */
 
 .line{
-    width:0;
+    width:120px;
     height:1px;
     background:white;
-    margin:40px auto 0 auto;
-    animation:grow 2.2s ease forwards;
-    animation-delay:1.2s;
-}
-
-/* Animations */
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(12px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    animation:grow 2s ease forwards;
 }
 
 @keyframes grow{
-    to{
-        width:140px;
-    }
+    from{width:0}
+    to{width:120px}
 }
 
 </style>
-
-
-<script>
-
-// Hold screen long enough to feel intentional
-setTimeout(function(){
-    window.location.href="Portfolio.pdf";
-}, 3200);
-
-</script>
-
 </head>
 
 <body>
 
-<div class="wrapper">
-
-    <div class="logo">
-        LEO&nbsp;HYDRA
-    </div>
-
-    <div class="subtitle">
-        SELECTED WORK
-    </div>
-
+<div class="loader" id="loader">
+    <div class="logo">LEO HYDRA</div>
     <div class="line"></div>
-
 </div>
+
+<iframe src="Portfolio.pdf" onload="hideLoader()"></iframe>
+
+<script>
+function hideLoader(){
+    setTimeout(()=>{
+        document.getElementById("loader").classList.add("hidden");
+    },500); // small delay feels more intentional
+}
+</script>
 
 </body>
 </html>
