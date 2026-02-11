@@ -1,94 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Leo Hydra — Portfolio</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Preload the PDF -->
+<link rel="preload" href="Portfolio.pdf" as="document">
 
 <style>
 
 body{
     margin:0;
     background:#050505;
-    overflow:hidden;
-}
-
-/* PDF */
-
-iframe{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    border:none;
-}
-
-/* Loader */
-
-.loader{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#050505;
+    color:white;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
-    color:white;
-    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial;
-    transition:opacity .8s ease;
+    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    overflow:hidden;
 }
 
-/* Fade out */
-
-.loader.hidden{
-    opacity:0;
-    pointer-events:none;
+.wrapper{
+    text-align:center;
 }
-
-/* Logo */
 
 .logo{
-    letter-spacing:14px;
     font-size:34px;
-    margin-bottom:20px;
+    letter-spacing:14px;
+    font-weight:300;
+    opacity:0;
+    animation:fadeUp 1.8s ease forwards;
 }
 
-/* Luxury line */
+.subtitle{
+    margin-top:18px;
+    font-size:12px;
+    letter-spacing:6px;
+    opacity:0;
+    animation:fadeUp 1.8s ease forwards;
+    animation-delay:.6s;
+}
 
 .line{
-    width:120px;
+    width:0;
     height:1px;
     background:white;
-    animation:grow 2s ease forwards;
+    margin:40px auto 0 auto;
+    animation:grow 2.2s ease forwards;
+    animation-delay:1.2s;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 @keyframes grow{
-    from{width:0}
-    to{width:120px}
+    to{
+        width:140px;
+    }
 }
 
 </style>
+
+<script>
+
+// Preload intelligently
+const pdf = new Image();
+pdf.src = "Portfolio.pdf";
+
+// redirect slightly later so animation finishes
+setTimeout(function(){
+    window.location.href="Portfolio.pdf";
+}, 2600); // shorter feels more confident
+
+</script>
+
 </head>
 
 <body>
 
-<div class="loader" id="loader">
-    <div class="logo">LEO HYDRA</div>
+<div class="wrapper">
+
+    <div class="logo">
+        LEO&nbsp;HYDRA
+    </div>
+
+    <div class="subtitle">
+        SELECTED WORK
+    </div>
+
     <div class="line"></div>
+
 </div>
-
-<iframe src="Portfolio.pdf" onload="hideLoader()"></iframe>
-
-<script>
-function hideLoader(){
-    setTimeout(()=>{
-        document.getElementById("loader").classList.add("hidden");
-    },500); // small delay feels more intentional
-}
-</script>
 
 </body>
 </html>
