@@ -91,21 +91,21 @@ body{
 
 <script>
 
-// START downloading immediately
-fetch("Portfolio.pdf").then(function(){
+fetch("Portfolio.pdf")
+.then(function(){
 
-    // redirect the MOMENT browser has it
-    window.location.replace("Portfolio.pdf");
+    setTimeout(function(){
+        window.location.replace("Portfolio.pdf");
+    }, 500); // psychological smoothing
 
 });
 
-
-// safety fallback (bad networks)
 setTimeout(function(){
     window.location.replace("Portfolio.pdf");
 }, 12000);
 
 </script>
+
 
 </body>
 </html>
