@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Leo Hydra Portfolio</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+html,body{
+margin:0;
+height:100%;
+background:#0f0f0f;
+font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.loader{
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:18px;
+letter-spacing:1px;
+}
+
+iframe{
+position:fixed;
+width:100%;
+height:100%;
+border:none;
+opacity:0;
+transition:opacity .6s ease;
+}
+
+iframe.loaded{
+opacity:1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="loader">
+Preparing portfolio...
+</div>
+
+<iframe 
+src="https://www.dropbox.com/scl/fi/wm4732i7p716p7sdd7sbe/Portfolio.pdf?rlkey=ij7h0h52elw8v512ianuvi1re&e=2&st=88xdttt0&raw=1"
+onload="document.querySelector('.loader').style.display='none'; this.classList.add('loaded');">
+</iframe>
+
+</body>
+</html>
