@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link rel="preload" href="Portfolio.pdf" as="fetch" type="application/pdf" crossorigin>
+
 <style>
 
 body{
@@ -20,63 +22,54 @@ body{
     overflow:hidden;
 }
 
-/* Container */
-
 .wrapper{
     text-align:center;
 }
-
-/* Name */
 
 .logo{
     font-size:34px;
     letter-spacing:14px;
     font-weight:300;
     opacity:0;
-    animation:fadeUp 1.8s ease forwards;
+    animation:fadeUp 1.6s ease forwards;
 }
-
-/* Subtitle */
 
 .subtitle{
     margin-top:18px;
     font-size:12px;
     letter-spacing:6px;
     opacity:0;
-    animation:fadeUp 1.8s ease forwards;
-    animation-delay:.6s;
+    animation:fadeUp 1.6s ease forwards;
+    animation-delay:.5s;
 }
 
-/* Luxury Loading Line */
-
 .line{
-    width:140px;
+    width:150px;
     height:1px;
-    background:rgba(255,255,255,.25);
+    background:rgba(255,255,255,.2);
     margin:40px auto 0 auto;
     position:relative;
     overflow:hidden;
 }
 
-/* Moving highlight */
-
 .line::after{
     content:'';
     position:absolute;
-    left:-40%;
-    top:0;
     height:100%;
-    width:40%;
+    width:35%;
     background:white;
-    animation:slide 1.6s linear infinite;
+    animation:slide 1.4s linear infinite;
 }
 
-/* Animations */
+@keyframes slide{
+    from{ left:-35%; }
+    to{ left:100%; }
+}
 
 @keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(12px);
+        transform:translateY(10px);
     }
     to{
         opacity:1;
@@ -84,42 +77,35 @@ body{
     }
 }
 
-@keyframes slide{
-    from{ left:-40%; }
-    to{ left:100%; }
-}
-
 </style>
-
-
-<script>
-
-// Slightly longer so mobile already buffers the PDF.
-// This removes MOST perceived double-loading.
-
-setTimeout(function(){
-    window.location.replace("Portfolio.pdf");
-}, 5000);
-
-</script>
 
 </head>
 
 <body>
 
 <div class="wrapper">
-
-    <div class="logo">
-        LEO&nbsp;HYDRA
-    </div>
-
-    <div class="subtitle">
-        SELECTED WORK
-    </div>
-
+    <div class="logo">LEO&nbsp;HYDRA</div>
+    <div class="subtitle">SELECTED WORK</div>
     <div class="line"></div>
-
 </div>
+
+<script>
+
+// START downloading immediately
+fetch("Portfolio.pdf").then(function(){
+
+    // redirect the MOMENT browser has it
+    window.location.replace("Portfolio.pdf");
+
+});
+
+
+// safety fallback (bad networks)
+setTimeout(function(){
+    window.location.replace("Portfolio.pdf");
+}, 12000);
+
+</script>
 
 </body>
 </html>
